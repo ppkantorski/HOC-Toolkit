@@ -89,25 +89,25 @@ SD Card Root
 └── switch/
     └── .packages/
         └── HOC Toolkit/
-            ├── package.ini             ← main menu (RAM / CPU / GPU / SoC)
-            ├── boot_package.ini        ← syncs all footers on every overlay boot
-            ├── timings.ini             ← timing submenu
-            ├── timing_presets.ini      ← vendor timing presets
-            ├── advanced_ram_latency.ini← per-bucket latency editor (Mariko)
-            ├── backup.ini              ← backup slot UI
-            ├── backup_info.ini         ← backup slot detail view
+            ├── package.ini              ← main menu (RAM / CPU / GPU / SoC)
+            ├── boot_package.ini         ← syncs all footers on every overlay boot
+            ├── timings.ini              ← timing submenu
+            ├── timing_presets.ini       ← vendor timing presets
+            ├── advanced_ram_latency.ini ← per-bucket latency editor (Mariko)
+            ├── backup.ini               ← backup slot UI
+            ├── backup_info.ini          ← backup slot detail view
             ├── backup_labels.txt
-            ├── custom_table.ini        ← per-frequency GPU voltage table
-            ├── fan_curve.ini           ← fan curve optimizer
-            ├── info.ini                ← live info dashboard
-            ├── system-settings.ini     ← system toggle menu
-            ├── ram_erista.ini          ← Erista per-frequency RAM voltage editor
+            ├── custom_table.ini         ← per-frequency GPU voltage table
+            ├── fan_curve.ini            ← fan curve optimizer
+            ├── info.ini                 ← live info dashboard
+            ├── system-settings.ini      ← system toggle menu
+            ├── ram_erista.ini           ← Erista per-frequency RAM voltage editor
             ├── ram_volt.ini
-            ├── preset_*.ini            ← vendor timing preset definitions
-            ├── config.ini              ← runtime footer state (auto-managed)
-            ├── erista/                 ← Erista-specific option JSON files
-            ├── mariko/                 ← Mariko-specific option JSON files
-            └── json/                   ← shared lookup and option JSON files
+            ├── preset_*.ini             ← vendor timing preset definitions
+            ├── config.ini               ← runtime footer state (auto-managed)
+            ├── erista/                  ← Erista-specific option JSON files
+            ├── mariko/                  ← Mariko-specific option JSON files
+            └── json/                    ← shared lookup and option JSON files
 ```
 
 ---
