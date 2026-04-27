@@ -141,4 +141,4 @@ Contributions are welcome. Please open an [issue](https://github.com/Horizon-OC/
 
 ## License
 
-Licensed under [GPLv2](LICENSE).
+Licensed and distributed under [GPLv2](LICENSE).
