@@ -129,7 +129,7 @@ HOC Toolkit is a continuation of the original [OC Toolkit](https://github.com/pp
 | [ppkantorski](https://github.com/ppkantorski) | Original OC Toolkit author; Ultrahand Overlay |
 | [B3711](https://github.com/B3711) | OC Toolkit development |
 | [NaGa](https://github.com/NaGa) | OC Toolkit development |
-| [MestreYodaRossi](https://github.com/MestreYodaRossi) | OC Toolkit development |
+| **MestreYodaRossi** | OC Toolkit development |
 
 ---
 
