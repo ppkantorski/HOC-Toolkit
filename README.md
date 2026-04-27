@@ -1,6 +1,7 @@
 # HOC Toolkit
 
 [![platform](https://img.shields.io/badge/platform-Switch-898c8c)](https://gbatemp.net/forums/nintendo-switch.283/?prefix_id=44)
+[![language](https://img.shields.io/badge/language-UltraScript-ba1632.svg)](https://github.com/topics/ultrahand-package)
 [![GPLv2 License](https://img.shields.io/badge/license-GPLv2-189c11.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 [![Latest Version](https://img.shields.io/github/v/release/Horizon-OC/HOC-Toolkit?label=latest&color=blue)](https://github.com/Horizon-OC/HOC-Toolkit/releases/latest)
 [![GitHub issues](https://img.shields.io/github/issues/Horizon-OC/HOC-Toolkit?color=222222)](https://github.com/Horizon-OC/HOC-Toolkit/issues)
