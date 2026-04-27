@@ -142,3 +142,4 @@ Contributions are welcome. Please open an [issue](https://github.com/Horizon-OC/
 ## License
 
 Licensed and distributed under [GPLv2](LICENSE).
+Copyright © 2023–2026 ppkantorski
