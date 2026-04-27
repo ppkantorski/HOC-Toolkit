@@ -85,7 +85,7 @@
 ## File Structure
 
 ```
-SD Card Root
+sdmc:/
 └── switch/
     └── .packages/
         └── HOC Toolkit/
