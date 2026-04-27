@@ -121,7 +121,7 @@ Platform-specific sections are gated using Ultrahand's `erista:` and `mariko:` g
 
 ## Credits
 
-HOC Toolkit is a continuation of the original [OC Toolkit](https://github.com/ppkantorski/Ultrahand-Overlay/tree/main/examples/OC%20Toolkit) by [ppkantorski](https://github.com/ppkantorski), which was further developed in [OC Switchcraft EOS](https://github.com/halop/OC-Switchcraft-EOS) by [halop](https://github.com/halop) with preliminary updates for HOC by [NaGaa95](https://github.com/NaGaa95). Rebuilt and extended for Horizon OC.
+HOC Toolkit is a continuation of the original [OC Toolkit](https://github.com/ppkantorski/Ultrahand-Overlay/tree/main/examples/OC%20Toolkit) by [ppkantorski](https://github.com/ppkantorski), which was further developed in [OC Switchcraft EOS](https://github.com/halop/OC-Switchcraft-EOS) by [halop](https://github.com/halop) with preliminary updates for HOC by [NaGaa95](https://github.com/NaGaa95).
 
 | Contributor | Role |
 |---|---|
