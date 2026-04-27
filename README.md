@@ -3,9 +3,9 @@
 [![platform](https://img.shields.io/badge/platform-Switch-898c8c)](https://gbatemp.net/forums/nintendo-switch.283/?prefix_id=44)
 [![language](https://img.shields.io/badge/language-UltraScript-ba1632.svg)](https://github.com/topics/ultrahand-package)
 [![GPLv2 License](https://img.shields.io/badge/license-GPLv2-189c11.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
-[![Latest Version](https://img.shields.io/github/v/release/Horizon-OC/HOC-Toolkit?label=latest&color=blue)](https://github.com/Horizon-OC/HOC-Toolkit/releases/latest)
-[![GitHub issues](https://img.shields.io/github/issues/Horizon-OC/HOC-Toolkit?color=222222)](https://github.com/Horizon-OC/HOC-Toolkit/issues)
-[![GitHub stars](https://img.shields.io/github/stars/Horizon-OC/HOC-Toolkit)](https://github.com/Horizon-OC/HOC-Toolkit/stargazers)
+[![Latest Version](https://img.shields.io/github/v/release/Horizon-OC/HOC-Toolkit?label=latest&color=blue)](https://github.com/ppkantorski/HOC-Toolkit/releases/latest)
+[![GitHub issues](https://img.shields.io/github/issues/Horizon-OC/HOC-Toolkit?color=222222)](https://github.com/ppkantorski/HOC-Toolkit/issues)
+[![GitHub stars](https://img.shields.io/github/stars/Horizon-OC/HOC-Toolkit)](https://github.com/ppkantorski/HOC-Toolkit/stargazers)
 
 **HOC Toolkit** is an [Ultrahand](https://github.com/ppkantorski/Ultrahand-Overlay) package for advanced overclocking configuration on the Nintendo Switch, built specifically for [Horizon OC](https://github.com/Horizon-OC/Horizon-OC) (HOC 2.1.0). It provides a full in-overlay GUI for tuning RAM, CPU, GPU, and SoC parameters directly against the `hoc.kip` kernel patch — no PC required.
 
