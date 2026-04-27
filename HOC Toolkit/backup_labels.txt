@@ -1,0 +1,7 @@
+Docked
+Handheld
+Retro
+Stable
+Test
+Low Power
+Extreme

@@ -1,0 +1,17 @@
+[
+    {
+        "name": "66 MHz",
+        "label": "66 MHz",
+        "hex": "00000000"
+    },
+    {
+        "name": "100 MHz",
+        "label": "100 MHz",
+        "hex": "01000000"
+    },
+    {
+        "name": "JEDEC",
+        "label": "JEDEC",
+        "hex": "02000000"
+    }
+]

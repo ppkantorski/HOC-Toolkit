@@ -1,0 +1,267 @@
+[
+    {
+        "name": "1600 MHz",
+        "label": "1600 MHz - Default",
+        "hex": "006A1800"
+    },
+    {
+        "name": "1633 MHz",
+        "label": "1633 MHz",
+        "hex": "E8EA1800"
+    },
+    {
+        "name": "1666 MHz",
+        "label": "1666 MHz",
+        "hex": "D06B1900"
+    },
+    {
+        "name": "1700 MHz",
+        "label": "1700 MHz",
+        "hex": "A0F01900"
+    },
+    {
+        "name": "1733 MHz",
+        "label": "1733 MHz",
+        "hex": "88711A00"
+    },
+    {
+        "name": "1766 MHz",
+        "label": "1766 MHz",
+        "hex": "70F21A00"
+    },
+    {
+        "name": "1800 MHz",
+        "label": "1800 MHz",
+        "hex": "40771B00"
+    },
+    {
+        "name": "1833 MHz",
+        "label": "1833 MHz",
+        "hex": "28F81B00"
+    },
+    {
+        "name": "1866 MHz",
+        "label": "1866 MHz - JEDEC",
+        "hex": "10791C00"
+    },
+    {
+        "name": "1900 MHz",
+        "label": "1900 MHz",
+        "hex": "E0FD1C00"
+    },
+    {
+        "name": "1933 MHz",
+        "label": "1933 MHz",
+        "hex": "C87E1D00"
+    },
+    {
+        "name": "1966 MHz",
+        "label": "1966 MHz",
+        "hex": "B0FF1D00"
+    },
+    {
+        "name": "1996 MHz",
+        "label": "1996 MHz - JEDEC",
+        "hex": "00781E00"
+    },
+    {
+        "name": "2000 MHz",
+        "label": "2000 MHz",
+        "hex": "80841E00"
+    },
+    {
+        "name": "2033 MHz",
+        "label": "2033 MHz",
+        "hex": "68051F00"
+    },
+    {
+        "name": "2066 MHz",
+        "label": "2066 MHz",
+        "hex": "50861F00"
+    },
+    {
+        "name": "2100 MHz",
+        "label": "2100 MHz",
+        "hex": "200B2000"
+    },
+    {
+        "name": "2133 MHz",
+        "label": "2133 MHz - JEDEC",
+        "hex": "088C2000"
+    },
+    {
+        "name": "2166 MHz",
+        "label": "2166 MHz",
+        "hex": "F00C2100"
+    },
+    {
+        "name": "2200 MHz",
+        "label": "2200 MHz",
+        "hex": "C0912100"
+    },
+    {
+        "name": "2233 MHz",
+        "label": "2233 MHz",
+        "hex": "A8122200"
+    },
+    {
+        "name": "2266 MHz",
+        "label": "2266 MHz",
+        "hex": "90932200"
+    },
+    {
+        "name": "2300 MHz",
+        "label": "2300 MHz",
+        "hex": "60182300"
+    },
+    {
+        "name": "2333 MHz",
+        "label": "2333 MHz",
+        "hex": "48992300"
+    },
+    {
+        "name": "2366 MHz",
+        "label": "2366 MHz",
+        "hex": "301A2400"
+    },
+    {
+        "name": "2400 MHz",
+        "label": "2400 MHz - JEDEC",
+        "hex": "009F2400"
+    },
+    {
+        "name": "2433 MHz",
+        "label": "2433 MHz",
+        "hex": "E81F2500"
+    },
+    {
+        "name": "2466 MHz",
+        "label": "2466 MHz",
+        "hex": "D0A02500"
+    },
+    {
+        "name": "2500 MHz",
+        "label": "2500 MHz",
+        "hex": "A0252600"
+    },
+    {
+        "name": "2533 MHz",
+        "label": "2533 MHz",
+        "hex": "88A62600"
+    },
+    {
+        "name": "2566 MHz",
+        "label": "2566 MHz",
+        "hex": "70272700"
+    },
+    {
+        "name": "2600 MHz",
+        "label": "2600 MHz",
+        "hex": "40AC2700"
+    },
+    {
+        "name": "2633 MHz",
+        "label": "2633 MHz",
+        "hex": "282D2800"
+    },
+    {
+        "name": "2666 MHz",
+        "label": "2666 MHz - JEDEC",
+        "hex": "10AE2800"
+    },
+    {
+        "name": "2700 MHz",
+        "label": "2700 MHz",
+        "hex": "E0322900"
+    },
+    {
+        "name": "2733 MHz",
+        "label": "2733 MHz",
+        "hex": "C8B32900"
+    },
+    {
+        "name": "2766 MHz",
+        "label": "2766 MHz",
+        "hex": "B0342A00"
+    },
+    {
+        "name": "2800 MHz",
+        "label": "2800 MHz",
+        "hex": "80B92A00"
+    },
+    {
+        "name": "2833 MHz",
+        "label": "2833 MHz",
+        "hex": "683A2B00"
+    },
+    {
+        "name": "2866 MHz",
+        "label": "2866 MHz",
+        "hex": "50BB2B00"
+    },
+    {
+        "name": "2900 MHz",
+        "label": "2900 MHz",
+        "hex": "20402C00"
+    },
+    {
+        "name": "2933 MHz",
+        "label": "2933 MHz - JEDEC",
+        "hex": "08C12C00"
+    },
+    {
+        "name": "2966 MHz",
+        "label": "2966 MHz",
+        "hex": "F0412D00"
+    },
+    {
+        "name": "3000 MHz",
+        "label": "3000 MHz",
+        "hex": "C0C62D00"
+    },
+    {
+        "name": "3033 MHz",
+        "label": "3033 MHz",
+        "hex": "A8472E00"
+    },
+    {
+        "name": "3066 MHz",
+        "label": "3066 MHz",
+        "hex": "90C82E00"
+    },
+    {
+        "name": "3100 MHz",
+        "label": "3100 MHz",
+        "hex": "604D2F00"
+    },
+    {
+        "name": "3133 MHz",
+        "label": "3133 MHz",
+        "hex": "48CE2F00"
+    },
+    {
+        "name": "3166 MHz",
+        "label": "3166 MHz",
+        "hex": "304F3000"
+    },
+    {
+        "name": "3200 MHz",
+        "label": "3200 MHz - JEDEC",
+        "hex": "00D43000"
+    },
+    {
+        "name": "3233 MHz",
+        "label": "3233 MHz - 1740+ Speedo",
+        "hex": "E8543100"
+    },
+    {
+        "name": "3266 MHz",
+        "label": "3266 MHz - 1760+ Speedo",
+        "hex": "D0D53100"
+    },
+    {
+        "name": "3300 MHz",
+        "label": "3300 MHz - 1780+ Speedo",
+        "hex": "A05A3200"
+    }
+]

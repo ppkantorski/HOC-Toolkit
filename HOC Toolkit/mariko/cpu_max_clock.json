@@ -1,0 +1,42 @@
+[
+  {
+    "name": "1963 MHz",
+    "label": "1963 MHz",
+    "hex": "ECF51D00"
+  },
+  {
+    "name": "2091 MHz",
+    "label": "2091 MHz",
+    "hex": "F8E71F00"
+  },
+  {
+    "name": "2193 MHz",
+    "label": "2193 MHz",
+    "hex": "68762100"
+  },
+  {
+    "name": "2295 MHz",
+    "label": "2295 MHz",
+    "hex": "D8042300"
+  },
+  {
+    "name": "2397 MHz",
+    "label": "2397 MHz",
+    "hex": "48932400"
+  },
+  {
+    "name": "2499 MHz",
+    "label": "2499 MHz",
+    "hex": "B8212600"
+  },
+  {
+    "name": "2601 MHz",
+    "label": "2601 MHz",
+    "hex": "28B02700"
+  },
+  {
+    "name": "2703 MHz",
+    "label": "2703 MHz",
+    "hex": "983E2900"
+  }
+]

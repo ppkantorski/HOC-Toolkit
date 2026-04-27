@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Use Read/Write Pair",
+        "label": "Use Read/Write Pair",
+        "hex": "00000000"
+    },
+    {
+        "name": "1333 RL",
+        "label": "1333 RL",
+        "hex": "1C000000"
+    },
+    {
+        "name": "1600 RL",
+        "label": "1600 RL",
+        "hex": "20000000"
+    },
+    {
+        "name": "1866 RL",
+        "label": "1866 RL",
+        "hex": "24000000"
+    },
+    {
+        "name": "2133 RL",
+        "label": "2133 RL",
+        "hex": "28000000"
+    }
+]

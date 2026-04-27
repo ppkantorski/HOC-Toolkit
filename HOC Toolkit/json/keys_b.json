@@ -1,0 +1,11 @@
+[
+  {
+    "L+R+DUP": "L + R +↑",
+    "L+R+DDOWN": "L + R +↓",
+    "ZL+ZR+DUP": "ZL + ZR +↑",
+    "ZL+ZR+DDOWN": "ZL + ZR +↓",
+    "PLUS+MINUS": "Plus + Minus",
+    "L+DDOWN+RSTICK": "L +↓+ RStick",
+    "LSTICK+RSTICK": "LSTICK + RSTICK"
+  }
+]

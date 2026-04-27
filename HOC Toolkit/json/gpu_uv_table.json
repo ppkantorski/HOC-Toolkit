@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Default",
+        "label": "Default",
+        "hex": "00000000"
+    },
+    {
+        "name": "SLT",
+        "label": "SLT",
+        "hex": "01000000"
+    },
+  {
+    "name": "HiOPT",
+    "label": "HiOPT",
+    "hex": "02000000"
+  }
+]

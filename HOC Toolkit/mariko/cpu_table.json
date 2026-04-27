@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Default",
+    "label": "Default",
+    "hex": "01000000"
+  },
+  {
+    "name": "1581 MHz Tbreak",
+    "label": "1581 MHz Tbreak",
+    "hex": "02000000"
+  },
+  {
+    "name": "1683 MHz Tbreak",
+    "label": "1683 MHz Tbreak",
+    "hex": "03000000"
+  },
+  {
+    "name": "Extreme UV",
+    "label": "Extreme UV",
+    "hex": "04000000"
+  }
+]
