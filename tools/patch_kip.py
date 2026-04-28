@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-patch_cust.py — HOC CUST Table Patcher for hoc.kip
+patch_kip.py — HOC CUST Table Patcher for hoc.kip
 ====================================================
 Reads every writable field from cust_master_list.json and patches the
 corresponding bytes inside hoc.kip at the correct offset from the CUST
@@ -8,7 +8,7 @@ magic signature.
 
 Usage
 -----
-  python patch_cust.py [--kip <path>] [--json <path>] [--no-backup] [--dry-run] [--read]
+  python patch_kip.py [--kip <path>] [--json <path>] [--no-backup] [--dry-run] [--read]
 
   --kip       Path to hoc.kip            (default: ./hoc.kip)
   --json      Path to cust_master_list.json (default: ./cust_master_list.json)
