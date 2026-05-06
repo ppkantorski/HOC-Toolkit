@@ -126,9 +126,9 @@ HOC Toolkit is a continuation of the original [OC Toolkit](https://github.com/pp
 
 | Contributor | Role |
 |---|---|
-| [ppkantorski](https://github.com/ppkantorski) | Original OC Toolkit author; Ultrahand Overlay |
-| [halop](https://github.com/halop) | OC Toolkit development |
-| [NaGa](https://github.com/NaGa) | OC Toolkit development |
+| [ppkantorski](https://github.com/ppkantorski) | Original author; Ultrahand Overlay |
+| [halop](https://github.com/halop) | OC Toolkit development; Former EOS Development |
+| [NaGa](https://github.com/NaGa) | OC Toolkit development; Former EOS Development |
 | **MestreYodaRossi** | OC Toolkit development |
 
 ---
