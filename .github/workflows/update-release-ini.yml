@@ -34,14 +34,16 @@ jobs:
 
           HOC_VERSION=$(fetch_version "Horizon-OC/Horizon-OC")
           TOOLKIT_VERSION=$(fetch_version "ppkantorski/HOC-Toolkit")
+          SYSCLK_VERSION=$(fetch_version "ppkantorski/sys-clk")
 
           echo "HOC_VERSION=${HOC_VERSION}"         >> "$GITHUB_ENV"
           echo "TOOLKIT_VERSION=${TOOLKIT_VERSION}" >> "$GITHUB_ENV"
+          echo "SYSCLK_VERSION=${SYSCLK_VERSION}"   >> "$GITHUB_ENV"
 
       - name: Write RELEASE.ini
         run: |
-          printf '[Release Info]\nlatest_hoc=%s\nlatest_toolkit=%s\n' \
-            "${HOC_VERSION}" "${TOOLKIT_VERSION}" > RELEASE.ini
+          printf '[Release Info]\nlatest_hoc=%s\nlatest_toolkit=%s\nlatest_sys-clk=%s\n' \
+            "${HOC_VERSION}" "${TOOLKIT_VERSION}" "${SYSCLK_VERSION}" > RELEASE.ini
 
           echo "--- RELEASE.ini contents ---"
           cat RELEASE.ini
