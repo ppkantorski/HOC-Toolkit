@@ -1,0 +1,70 @@
+name: Update Release Info
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'  # every 30 minutes
+  workflow_dispatch:          # manual trigger from GitHub UI
+
+jobs:
+  update-release-ini:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch latest release versions
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          fetch_version() {
+            local repo="$1"
+            local version
+
+            version=$(curl -fsSL \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${repo}/releases/latest" \
+              | python3 -c "
+import sys, json
+try:
+    data = json.load(sys.stdin)
+    tag = data.get('tag_name', '')
+    # strip leading 'v' if present
+    print(tag.lstrip('v'))
+except Exception:
+    print('')
+" 2>/dev/null)
+
+            echo "${version}"
+          }
+
+          HOC_VERSION=$(fetch_version "Horizon-OC/Horizon-OC")
+          TOOLKIT_VERSION=$(fetch_version "ppkantorski/HOC-Toolkit")
+
+          echo "HOC_VERSION=${HOC_VERSION}"         >> "$GITHUB_ENV"
+          echo "TOOLKIT_VERSION=${TOOLKIT_VERSION}" >> "$GITHUB_ENV"
+
+      - name: Write RELEASE.ini
+        run: |
+          cat > RELEASE.ini << EOF
+          [Release Info]
+          latest_hoc=${HOC_VERSION}
+          latest_toolkit=${TOOLKIT_VERSION}
+          EOF
+
+          # Normalise indentation (heredoc may add leading spaces)
+          sed -i 's/^[[:space:]]*//' RELEASE.ini
+
+          echo "--- RELEASE.ini contents ---"
+          cat RELEASE.ini
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add RELEASE.ini
+          git diff --staged --quiet || git commit -m 'chore: update RELEASE.ini [skip ci]'
+          git push
