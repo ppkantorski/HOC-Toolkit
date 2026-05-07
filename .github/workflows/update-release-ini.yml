@@ -15,30 +15,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
       - name: Fetch latest release versions
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           fetch_version() {
             local repo="$1"
-            local version
-
-            version=$(curl -fsSL \
+            curl -fsSL \
               -H "Authorization: Bearer ${GH_TOKEN}" \
               -H "Accept: application/vnd.github+json" \
               "https://api.github.com/repos/${repo}/releases/latest" \
-              | python3 -c "
-import sys, json
-try:
-    data = json.load(sys.stdin)
-    tag = data.get('tag_name', '')
-    # strip leading 'v' if present
-    print(tag.lstrip('v'))
-except Exception:
-    print('')
-" 2>/dev/null)
-
-            echo "${version}"
+              | jq -r '.tag_name // "" | ltrimstr("v")' \
+              2>/dev/null || echo ""
           }
 
           HOC_VERSION=$(fetch_version "Horizon-OC/Horizon-OC")
@@ -49,14 +40,8 @@ except Exception:
 
       - name: Write RELEASE.ini
         run: |
-          cat > RELEASE.ini << EOF
-          [Release Info]
-          latest_hoc=${HOC_VERSION}
-          latest_toolkit=${TOOLKIT_VERSION}
-          EOF
-
-          # Normalise indentation (heredoc may add leading spaces)
-          sed -i 's/^[[:space:]]*//' RELEASE.ini
+          printf '[Release Info]\nlatest_hoc=%s\nlatest_toolkit=%s\n' \
+            "${HOC_VERSION}" "${TOOLKIT_VERSION}" > RELEASE.ini
 
           echo "--- RELEASE.ini contents ---"
           cat RELEASE.ini
