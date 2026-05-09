@@ -30,7 +30,7 @@ jobs:
             fi
           }
           echo "RESTRICT_HOC=$(parse_ini_key latest_hoc)"               >> "$GITHUB_ENV"
-          echo "RESTRICT_TOOLKIT=$(parse_ini_key latest_toolkit)"       >> "$GITHUB_ENV"
+          echo "RESTRICT_TOOLKIT=$(parse_ini_key latest_hoc_toolkit)"       >> "$GITHUB_ENV"
           echo "RESTRICT_SYSCLK=$(parse_ini_key latest_sys-clk)"        >> "$GITHUB_ENV"
           echo "RESTRICT_SYSCLK_HOC=$(parse_ini_key latest_sys-clk-hoc)" >> "$GITHUB_ENV"
 
@@ -84,7 +84,7 @@ jobs:
 
       - name: Write RELEASE.ini
         run: |
-          printf '[Release Info]\nlatest_hoc=%s\nlatest_toolkit=%s\nlatest_sys-clk=%s\nlatest_sys-clk-hoc=%s\n' \
+          printf '[Release Info]\nlatest_hoc=%s\nlatest_hoc_toolkit=%s\nlatest_sys-clk=%s\nlatest_sys-clk-hoc=%s\n' \
             "${HOC_VERSION}" "${TOOLKIT_VERSION}" "${SYSCLK_VERSION}" "${SYSCLK_HOC_VERSION}" > RELEASE.ini
           echo "--- RELEASE.ini contents ---"
           cat RELEASE.ini
