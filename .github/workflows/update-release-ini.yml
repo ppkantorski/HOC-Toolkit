@@ -1,10 +1,8 @@
 name: Update Release Info
-
 on:
   schedule:
     - cron: '*/30 * * * *'
   workflow_dispatch:
-
 jobs:
   update-release-ini:
     runs-on: ubuntu-latest
@@ -13,10 +11,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-
       - name: Install jq
         run: sudo apt-get install -y jq
-
       - name: Load overrides from RESTRICT_RELEASE.ini
         run: |
           parse_ini_key() {
@@ -29,11 +25,11 @@ jobs:
                 | tr -d '\r'
             fi
           }
-          echo "RESTRICT_HOC=$(parse_ini_key latest_hoc)"               >> "$GITHUB_ENV"
-          echo "RESTRICT_TOOLKIT=$(parse_ini_key latest_hoc_toolkit)"       >> "$GITHUB_ENV"
-          echo "RESTRICT_SYSCLK=$(parse_ini_key latest_sys-clk)"        >> "$GITHUB_ENV"
-          echo "RESTRICT_SYSCLK_HOC=$(parse_ini_key latest_sys-clk-hoc)" >> "$GITHUB_ENV"
-
+          echo "RESTRICT_HOC=$(parse_ini_key latest_hoc)"                           >> "$GITHUB_ENV"
+          echo "RESTRICT_TOOLKIT=$(parse_ini_key latest_hoc_toolkit)"               >> "$GITHUB_ENV"
+          echo "RESTRICT_SYSCLK=$(parse_ini_key latest_sys-clk)"                    >> "$GITHUB_ENV"
+          echo "RESTRICT_SYSCLK_HOC=$(parse_ini_key latest_sys-clk-hoc)"            >> "$GITHUB_ENV"
+          echo "RESTRICT_STATUS_MONITOR=$(parse_ini_key latest_status_monitor)"     >> "$GITHUB_ENV"
       - name: Fetch latest release versions
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -47,7 +43,6 @@ jobs:
               | jq -r '.tag_name // "" | ltrimstr("v")' \
               2>/dev/null || echo ""
           }
-
           # Use override if set, otherwise poll GitHub
           if [[ -n "${RESTRICT_HOC}" ]]; then
             HOC_VERSION="${RESTRICT_HOC}"
@@ -55,40 +50,41 @@ jobs:
           else
             HOC_VERSION=$(fetch_version "Horizon-OC/Horizon-OC")
           fi
-
           if [[ -n "${RESTRICT_TOOLKIT}" ]]; then
             TOOLKIT_VERSION="${RESTRICT_TOOLKIT}"
             echo "TOOLKIT: using restricted value '${TOOLKIT_VERSION}'"
           else
             TOOLKIT_VERSION=$(fetch_version "ppkantorski/HOC-Toolkit")
           fi
-
           if [[ -n "${RESTRICT_SYSCLK}" ]]; then
             SYSCLK_VERSION="${RESTRICT_SYSCLK}"
             echo "SYS-CLK: using restricted value '${SYSCLK_VERSION}'"
           else
             SYSCLK_VERSION=$(fetch_version "ppkantorski/sys-clk")
           fi
-
           if [[ -n "${RESTRICT_SYSCLK_HOC}" ]]; then
             SYSCLK_HOC_VERSION="${RESTRICT_SYSCLK_HOC}"
             echo "SYS-CLK-HOC: using restricted value '${SYSCLK_HOC_VERSION}'"
           else
             SYSCLK_HOC_VERSION=$(fetch_version "ppkantorski/Horizon-OC")
           fi
-
-          echo "HOC_VERSION=${HOC_VERSION}"             >> "$GITHUB_ENV"
-          echo "TOOLKIT_VERSION=${TOOLKIT_VERSION}"     >> "$GITHUB_ENV"
-          echo "SYSCLK_VERSION=${SYSCLK_VERSION}"       >> "$GITHUB_ENV"
-          echo "SYSCLK_HOC_VERSION=${SYSCLK_HOC_VERSION}" >> "$GITHUB_ENV"
-
+          if [[ -n "${RESTRICT_STATUS_MONITOR}" ]]; then
+            STATUS_MONITOR_VERSION="${RESTRICT_STATUS_MONITOR}"
+            echo "STATUS-MONITOR: using restricted value '${STATUS_MONITOR_VERSION}'"
+          else
+            STATUS_MONITOR_VERSION=$(fetch_version "ppkantorski/Status-Monitor-Overlay")
+          fi
+          echo "HOC_VERSION=${HOC_VERSION}"                         >> "$GITHUB_ENV"
+          echo "TOOLKIT_VERSION=${TOOLKIT_VERSION}"                 >> "$GITHUB_ENV"
+          echo "SYSCLK_VERSION=${SYSCLK_VERSION}"                   >> "$GITHUB_ENV"
+          echo "SYSCLK_HOC_VERSION=${SYSCLK_HOC_VERSION}"           >> "$GITHUB_ENV"
+          echo "STATUS_MONITOR_VERSION=${STATUS_MONITOR_VERSION}"   >> "$GITHUB_ENV"
       - name: Write RELEASE.ini
         run: |
-          printf '[Release Info]\nlatest_hoc=%s\nlatest_hoc_toolkit=%s\nlatest_sys-clk=%s\nlatest_sys-clk-hoc=%s\n' \
-            "${HOC_VERSION}" "${TOOLKIT_VERSION}" "${SYSCLK_VERSION}" "${SYSCLK_HOC_VERSION}" > RELEASE.ini
+          printf '[Release Info]\nlatest_hoc=%s\nlatest_hoc_toolkit=%s\nlatest_sys-clk=%s\nlatest_sys-clk-hoc=%s\nlatest_status_monitor=%s\n' \
+            "${HOC_VERSION}" "${TOOLKIT_VERSION}" "${SYSCLK_VERSION}" "${SYSCLK_HOC_VERSION}" "${STATUS_MONITOR_VERSION}" > RELEASE.ini
           echo "--- RELEASE.ini contents ---"
           cat RELEASE.ini
-
       - name: Commit and push if changed
         run: |
           git config user.name  'github-actions[bot]'
