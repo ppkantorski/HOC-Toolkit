@@ -2,5 +2,6 @@
     "title": "HOC Toolkit",
     "text": "New Status Monitor update!",
     "font_size": 24,
+    "duration": 3000,
     "priority": 1
 }
