@@ -3,5 +3,5 @@
     "text": "Reboot is required.",
     "font_size": 24,
     "duration": 3000,
-    "priority": 1
+    "priority": 0
 }
