@@ -104,17 +104,17 @@ jobs:
           {
             printf '[HOC Toolkit]\nversion=%s\nfilename=%s\n' \
               "${TOOLKIT_VER}" "${TOOLKIT_FILE}"
-            printf '[Horizon OC]\nversion=%s\nfilename=%s\n' \
+            printf '\n[Horizon OC]\nversion=%s\nfilename=%s\n' \
               "${HOC_VER}" "${HOC_FILE}"
-            printf '[sys-clk-hoc]\nversion=%s\nfilename=%s\n' \
+            printf '\n[sys-clk-hoc]\nversion=%s\nfilename=%s\n' \
               "${SYSCLK_HOC_VER}" "${SYSCLK_HOC_FILE}"
-            printf '[sys-clk]\nversion=%s\nfilename=%s\n' \
+            printf '\n[sys-clk]\nversion=%s\nfilename=%s\n' \
               "${SYSCLK_VER}" "${SYSCLK_FILE}"
-            printf '[Status Monitor]\nversion=%s\nfilename=%s\n' \
+            printf '\n[Status Monitor]\nversion=%s\nfilename=%s\n' \
               "${STATUS_VER}" "${STATUS_FILE}"
-            printf '[Hekate]\nversion=%s\nfilename=%s\n' \
+            printf '\n[Hekate]\nversion=%s\nfilename=%s\n' \
               "${HEKATE_VER}" "${HEKATE_FILE}"
-            printf '[Atmosphere]\nversion=%s\nfilename=%s\n' \
+            printf '\n[Atmosphere]\nversion=%s\nfilename=%s\n' \
               "${AMS_VER}" "${AMS_FILE}"
           } > RELEASE.ini
           echo "--- RELEASE.ini contents ---"
