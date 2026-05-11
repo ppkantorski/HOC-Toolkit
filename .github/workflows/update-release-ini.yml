@@ -33,8 +33,8 @@ jobs:
             echo "R_SYSCLK_FILE=$(parse_ini 'sys-clk' filename)"
             echo "R_STATUS_VER=$(parse_ini 'Status Monitor' version)"
             echo "R_STATUS_FILE=$(parse_ini 'Status Monitor' filename)"
-            echo "R_HEKATE_VER=$(parse_ini 'Hekate' version)"
-            echo "R_HEKATE_FILE=$(parse_ini 'Hekate' filename)"
+            echo "R_HEKATE_VER=$(parse_ini 'hekate' version)"
+            echo "R_HEKATE_FILE=$(parse_ini 'hekate' filename)"
             echo "R_AMS_VER=$(parse_ini 'Atmosphere' version)"
             echo "R_AMS_FILE=$(parse_ini 'Atmosphere' filename)"
           } >> "$GITHUB_ENV"
@@ -112,7 +112,7 @@ jobs:
               "${SYSCLK_VER}" "${SYSCLK_FILE}"
             printf '\n[Status Monitor]\nversion=%s\nfilename=%s\n' \
               "${STATUS_VER}" "${STATUS_FILE}"
-            printf '\n[Hekate]\nversion=%s\nfilename=%s\n' \
+            printf '\n[hekate]\nversion=%s\nfilename=%s\n' \
               "${HEKATE_VER}" "${HEKATE_FILE}"
             printf '\n[Atmosphere]\nversion=%s\nfilename=%s\n' \
               "${AMS_VER}" "${AMS_FILE}"
