@@ -20,12 +20,7 @@ jobs:
           parse_ini() {
             local section="$1" key="$2"
             [[ -f RESTRICT_RELEASE.ini ]] || { echo ""; return; }
-            python3 -c "
-import configparser
-c = configparser.ConfigParser()
-c.read('RESTRICT_RELEASE.ini')
-print(c.get('${section}', '${key}', fallback=''))
-"
+            python3 -c "import configparser,sys;c=configparser.ConfigParser();c.read('RESTRICT_RELEASE.ini');print(c.get(sys.argv[1],sys.argv[2],fallback=''))" "$section" "$key"
           }
           {
             echo "R_TOOLKIT_VER=$(parse_ini 'HOC Toolkit' version)"
