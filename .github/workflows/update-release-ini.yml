@@ -11,96 +11,120 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+
       - name: Install jq
         run: sudo apt-get install -y jq
+
       - name: Load overrides from RESTRICT_RELEASE.ini
         run: |
-          parse_ini_key() {
-            local key="$1"
-            local file="RESTRICT_RELEASE.ini"
-            if [[ -f "$file" ]]; then
-              grep -E "^${key}\s*=" "$file" \
-                | head -1 \
-                | sed 's/^[^=]*=\s*//' \
-                | tr -d '\r'
-            fi
+          parse_ini() {
+            local section="$1" key="$2"
+            [[ -f RESTRICT_RELEASE.ini ]] || { echo ""; return; }
+            python3 -c "
+import configparser
+c = configparser.ConfigParser()
+c.read('RESTRICT_RELEASE.ini')
+print(c.get('${section}', '${key}', fallback=''))
+"
           }
-          echo "RESTRICT_HOC=$(parse_ini_key latest_hoc)"                           >> "$GITHUB_ENV"
-          echo "RESTRICT_TOOLKIT=$(parse_ini_key latest_hoc_toolkit)"               >> "$GITHUB_ENV"
-          echo "RESTRICT_SYSCLK=$(parse_ini_key latest_sys-clk)"                    >> "$GITHUB_ENV"
-          echo "RESTRICT_SYSCLK_HOC=$(parse_ini_key latest_sys-clk-hoc)"            >> "$GITHUB_ENV"
-          echo "RESTRICT_STATUS_MONITOR=$(parse_ini_key latest_status_monitor)"     >> "$GITHUB_ENV"
-          echo "RESTRICT_HEKATE=$(parse_ini_key latest_hekate)"                     >> "$GITHUB_ENV"
-          echo "RESTRICT_AMS=$(parse_ini_key latest_ams)"                           >> "$GITHUB_ENV"
-      - name: Fetch latest release versions
+          {
+            echo "R_TOOLKIT_VER=$(parse_ini 'HOC Toolkit' version)"
+            echo "R_TOOLKIT_FILE=$(parse_ini 'HOC Toolkit' filename)"
+            echo "R_HOC_VER=$(parse_ini 'Horizon OC' version)"
+            echo "R_HOC_FILE=$(parse_ini 'Horizon OC' filename)"
+            echo "R_SYSCLK_HOC_VER=$(parse_ini 'sys-clk-hoc' version)"
+            echo "R_SYSCLK_HOC_FILE=$(parse_ini 'sys-clk-hoc' filename)"
+            echo "R_SYSCLK_VER=$(parse_ini 'sys-clk' version)"
+            echo "R_SYSCLK_FILE=$(parse_ini 'sys-clk' filename)"
+            echo "R_STATUS_VER=$(parse_ini 'Status Monitor' version)"
+            echo "R_STATUS_FILE=$(parse_ini 'Status Monitor' filename)"
+            echo "R_HEKATE_VER=$(parse_ini 'Hekate' version)"
+            echo "R_HEKATE_FILE=$(parse_ini 'Hekate' filename)"
+            echo "R_AMS_VER=$(parse_ini 'Atmosphere' version)"
+            echo "R_AMS_FILE=$(parse_ini 'Atmosphere' filename)"
+          } >> "$GITHUB_ENV"
+
+      - name: Fetch latest releases
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          fetch_version() {
-            local repo="$1"
-            curl -fsSL \
+          # Returns "version|filename" — asset_pattern is a jq-compatible regex
+          fetch_release() {
+            local repo="$1" pattern="$2"
+            local json
+            json=$(curl -fsSL \
               -H "Authorization: Bearer ${GH_TOKEN}" \
               -H "Accept: application/vnd.github+json" \
-              "https://api.github.com/repos/${repo}/releases/latest" \
-              | jq -r '.tag_name // "" | ltrimstr("v")' \
-              2>/dev/null || echo ""
+              "https://api.github.com/repos/${repo}/releases/latest" 2>/dev/null) \
+              || { echo "|"; return; }
+            local ver file
+            ver=$(echo "$json" | jq -r '.tag_name // "" | ltrimstr("v")')
+            file=$(echo "$json" | jq -r --arg p "$pattern" \
+              '[.assets[].name | select(test($p))] | first // ""')
+            echo "${ver}|${file}"
           }
-          # Use override if set, otherwise poll GitHub
-          if [[ -n "${RESTRICT_HOC}" ]]; then
-            HOC_VERSION="${RESTRICT_HOC}"
-            echo "HOC: using restricted value '${HOC_VERSION}'"
-          else
-            HOC_VERSION=$(fetch_version "Horizon-OC/Horizon-OC")
-          fi
-          if [[ -n "${RESTRICT_TOOLKIT}" ]]; then
-            TOOLKIT_VERSION="${RESTRICT_TOOLKIT}"
-            echo "TOOLKIT: using restricted value '${TOOLKIT_VERSION}'"
-          else
-            TOOLKIT_VERSION=$(fetch_version "ppkantorski/HOC-Toolkit")
-          fi
-          if [[ -n "${RESTRICT_SYSCLK}" ]]; then
-            SYSCLK_VERSION="${RESTRICT_SYSCLK}"
-            echo "SYS-CLK: using restricted value '${SYSCLK_VERSION}'"
-          else
-            SYSCLK_VERSION=$(fetch_version "ppkantorski/sys-clk")
-          fi
-          if [[ -n "${RESTRICT_SYSCLK_HOC}" ]]; then
-            SYSCLK_HOC_VERSION="${RESTRICT_SYSCLK_HOC}"
-            echo "SYS-CLK-HOC: using restricted value '${SYSCLK_HOC_VERSION}'"
-          else
-            SYSCLK_HOC_VERSION=$(fetch_version "ppkantorski/Horizon-OC")
-          fi
-          if [[ -n "${RESTRICT_STATUS_MONITOR}" ]]; then
-            STATUS_MONITOR_VERSION="${RESTRICT_STATUS_MONITOR}"
-            echo "STATUS-MONITOR: using restricted value '${STATUS_MONITOR_VERSION}'"
-          else
-            STATUS_MONITOR_VERSION=$(fetch_version "ppkantorski/Status-Monitor-Overlay")
-          fi
-          if [[ -n "${RESTRICT_HEKATE}" ]]; then
-            HEKATE_VERSION="${RESTRICT_HEKATE}"
-            echo "HEKATE: using restricted value '${HEKATE_VERSION}'"
-          else
-            HEKATE_VERSION=$(fetch_version "CTCaer/hekate")
-          fi
-          if [[ -n "${RESTRICT_AMS}" ]]; then
-            AMS_VERSION="${RESTRICT_AMS}"
-            echo "AMS: using restricted value '${AMS_VERSION}'"
-          else
-            AMS_VERSION=$(fetch_version "Atmosphere-NX/Atmosphere")
-          fi
-          echo "HOC_VERSION=${HOC_VERSION}"                         >> "$GITHUB_ENV"
-          echo "TOOLKIT_VERSION=${TOOLKIT_VERSION}"                 >> "$GITHUB_ENV"
-          echo "SYSCLK_VERSION=${SYSCLK_VERSION}"                   >> "$GITHUB_ENV"
-          echo "SYSCLK_HOC_VERSION=${SYSCLK_HOC_VERSION}"           >> "$GITHUB_ENV"
-          echo "STATUS_MONITOR_VERSION=${STATUS_MONITOR_VERSION}"   >> "$GITHUB_ENV"
-          echo "HEKATE_VERSION=${HEKATE_VERSION}"                   >> "$GITHUB_ENV"
-          echo "AMS_VERSION=${AMS_VERSION}"                         >> "$GITHUB_ENV"
+
+          # Writes PREFIX_VER and PREFIX_FILE to GITHUB_ENV,
+          # applying per-field overrides where provided
+          set_vars() {
+            local prefix="$1" fetched="$2" r_ver="$3" r_file="$4"
+            local ver="${r_ver:-$(echo "$fetched" | cut -d'|' -f1)}"
+            local file="${r_file:-$(echo "$fetched" | cut -d'|' -f2-)}"
+            {
+              echo "${prefix}_VER=${ver}"
+              echo "${prefix}_FILE=${file}"
+            } >> "$GITHUB_ENV"
+          }
+
+          set_vars TOOLKIT \
+            "$(fetch_release ppkantorski/HOC-Toolkit '^hoc-toolkit\.zip$')" \
+            "${R_TOOLKIT_VER}" "${R_TOOLKIT_FILE}"
+
+          set_vars HOC \
+            "$(fetch_release Horizon-OC/Horizon-OC '^dist\.zip$')" \
+            "${R_HOC_VER}" "${R_HOC_FILE}"
+
+          set_vars SYSCLK_HOC \
+            "$(fetch_release ppkantorski/Horizon-OC '^sys-clk-hoc\.zip$')" \
+            "${R_SYSCLK_HOC_VER}" "${R_SYSCLK_HOC_FILE}"
+
+          set_vars SYSCLK \
+            "$(fetch_release ppkantorski/sys-clk '^sys-clk-overlay\.(ovl|zip)$')" \
+            "${R_SYSCLK_VER}" "${R_SYSCLK_FILE}"
+
+          set_vars STATUS \
+            "$(fetch_release ppkantorski/Status-Monitor-Overlay '^Status-Monitor-Overlay\.ovl$')" \
+            "${R_STATUS_VER}" "${R_STATUS_FILE}"
+
+          set_vars HEKATE \
+            "$(fetch_release CTCaer/hekate '^hekate_.*\.zip$')" \
+            "${R_HEKATE_VER}" "${R_HEKATE_FILE}"
+
+          set_vars AMS \
+            "$(fetch_release Atmosphere-NX/Atmosphere '^atmosphere-.*\.zip$')" \
+            "${R_AMS_VER}" "${R_AMS_FILE}"
+
       - name: Write RELEASE.ini
         run: |
-          printf '[Release Info]\nlatest_hoc=%s\nlatest_hoc_toolkit=%s\nlatest_sys-clk=%s\nlatest_sys-clk-hoc=%s\nlatest_status_monitor=%s\nlatest_hekate=%s\nlatest_ams=%s\n' \
-            "${HOC_VERSION}" "${TOOLKIT_VERSION}" "${SYSCLK_VERSION}" "${SYSCLK_HOC_VERSION}" "${STATUS_MONITOR_VERSION}" "${HEKATE_VERSION}" "${AMS_VERSION}" > RELEASE.ini
+          {
+            printf '[HOC Toolkit]\nversion=%s\nfilename=%s\n' \
+              "${TOOLKIT_VER}" "${TOOLKIT_FILE}"
+            printf '[Horizon OC]\nversion=%s\nfilename=%s\n' \
+              "${HOC_VER}" "${HOC_FILE}"
+            printf '[sys-clk-hoc]\nversion=%s\nfilename=%s\n' \
+              "${SYSCLK_HOC_VER}" "${SYSCLK_HOC_FILE}"
+            printf '[sys-clk]\nversion=%s\nfilename=%s\n' \
+              "${SYSCLK_VER}" "${SYSCLK_FILE}"
+            printf '[Status Monitor]\nversion=%s\nfilename=%s\n' \
+              "${STATUS_VER}" "${STATUS_FILE}"
+            printf '[Hekate]\nversion=%s\nfilename=%s\n' \
+              "${HEKATE_VER}" "${HEKATE_FILE}"
+            printf '[Atmosphere]\nversion=%s\nfilename=%s\n' \
+              "${AMS_VER}" "${AMS_FILE}"
+          } > RELEASE.ini
           echo "--- RELEASE.ini contents ---"
           cat RELEASE.ini
+
       - name: Commit and push if changed
         run: |
           git config user.name  'github-actions[bot]'
