@@ -30,6 +30,8 @@ jobs:
           echo "RESTRICT_SYSCLK=$(parse_ini_key latest_sys-clk)"                    >> "$GITHUB_ENV"
           echo "RESTRICT_SYSCLK_HOC=$(parse_ini_key latest_sys-clk-hoc)"            >> "$GITHUB_ENV"
           echo "RESTRICT_STATUS_MONITOR=$(parse_ini_key latest_status_monitor)"     >> "$GITHUB_ENV"
+          echo "RESTRICT_HEKATE=$(parse_ini_key latest_hekate)"                     >> "$GITHUB_ENV"
+          echo "RESTRICT_AMS=$(parse_ini_key latest_ams)"                           >> "$GITHUB_ENV"
       - name: Fetch latest release versions
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -74,15 +76,29 @@ jobs:
           else
             STATUS_MONITOR_VERSION=$(fetch_version "ppkantorski/Status-Monitor-Overlay")
           fi
+          if [[ -n "${RESTRICT_HEKATE}" ]]; then
+            HEKATE_VERSION="${RESTRICT_HEKATE}"
+            echo "HEKATE: using restricted value '${HEKATE_VERSION}'"
+          else
+            HEKATE_VERSION=$(fetch_version "CTCaer/hekate")
+          fi
+          if [[ -n "${RESTRICT_AMS}" ]]; then
+            AMS_VERSION="${RESTRICT_AMS}"
+            echo "AMS: using restricted value '${AMS_VERSION}'"
+          else
+            AMS_VERSION=$(fetch_version "Atmosphere-NX/Atmosphere")
+          fi
           echo "HOC_VERSION=${HOC_VERSION}"                         >> "$GITHUB_ENV"
           echo "TOOLKIT_VERSION=${TOOLKIT_VERSION}"                 >> "$GITHUB_ENV"
           echo "SYSCLK_VERSION=${SYSCLK_VERSION}"                   >> "$GITHUB_ENV"
           echo "SYSCLK_HOC_VERSION=${SYSCLK_HOC_VERSION}"           >> "$GITHUB_ENV"
           echo "STATUS_MONITOR_VERSION=${STATUS_MONITOR_VERSION}"   >> "$GITHUB_ENV"
+          echo "HEKATE_VERSION=${HEKATE_VERSION}"                   >> "$GITHUB_ENV"
+          echo "AMS_VERSION=${AMS_VERSION}"                         >> "$GITHUB_ENV"
       - name: Write RELEASE.ini
         run: |
-          printf '[Release Info]\nlatest_hoc=%s\nlatest_hoc_toolkit=%s\nlatest_sys-clk=%s\nlatest_sys-clk-hoc=%s\nlatest_status_monitor=%s\n' \
-            "${HOC_VERSION}" "${TOOLKIT_VERSION}" "${SYSCLK_VERSION}" "${SYSCLK_HOC_VERSION}" "${STATUS_MONITOR_VERSION}" > RELEASE.ini
+          printf '[Release Info]\nlatest_hoc=%s\nlatest_hoc_toolkit=%s\nlatest_sys-clk=%s\nlatest_sys-clk-hoc=%s\nlatest_status_monitor=%s\nlatest_hekate=%s\nlatest_ams=%s\n' \
+            "${HOC_VERSION}" "${TOOLKIT_VERSION}" "${SYSCLK_VERSION}" "${SYSCLK_HOC_VERSION}" "${STATUS_MONITOR_VERSION}" "${HEKATE_VERSION}" "${AMS_VERSION}" > RELEASE.ini
           echo "--- RELEASE.ini contents ---"
           cat RELEASE.ini
       - name: Commit and push if changed
