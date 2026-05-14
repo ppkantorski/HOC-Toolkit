@@ -1,8 +1,12 @@
 ⋯
+Current
+Legacy
 Docked
 Handheld
 Retro
-Stable
-Test
-Low Power
 Extreme
+Low Power
+Stable
+Unstable
+Testing
+Experimental
