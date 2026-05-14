@@ -35,6 +35,7 @@ jobs:
             echo "R_STATUS_FILE=$(parse_ini 'Status Monitor' filename)"
             echo "R_HEKATE_VER=$(parse_ini 'hekate' version)"
             echo "R_HEKATE_FILE=$(parse_ini 'hekate' filename)"
+            echo "R_HEKATE_FILE_8GB=$(parse_ini 'hekate' filename_8gb)"  # ← new
             echo "R_AMS_VER=$(parse_ini 'Atmosphere' version)"
             echo "R_AMS_FILE=$(parse_ini 'Atmosphere' filename)"
           } >> "$GITHUB_ENV"
@@ -91,9 +92,22 @@ jobs:
             "$(fetch_release ppkantorski/Status-Monitor-Overlay '^Status-Monitor-Overlay\.ovl$')" \
             "${R_STATUS_VER}" "${R_STATUS_FILE}"
 
-          set_vars HEKATE \
-            "$(fetch_release CTCaer/hekate '^hekate_.*\.zip$')" \
-            "${R_HEKATE_VER}" "${R_HEKATE_FILE}"
+          # ↓ Hekate: single API call, extract zip + 8GB bin together
+          hekate_json=$(curl -fsSL \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/CTCaer/hekate/releases/latest" 2>/dev/null) || hekate_json="{}"
+
+          hekate_ver=$(echo "$hekate_json"     | jq -r '.tag_name // "" | ltrimstr("v")')
+          hekate_file=$(echo "$hekate_json"    | jq -r '[.assets[].name | select(test("^hekate_.*\\.zip$"))]      | first // ""')
+          hekate_8gb=$(echo "$hekate_json"     | jq -r '[.assets[].name | select(test("^hekate_.*8GB\\.bin$"))]   | first // ""')
+
+          {
+            echo "HEKATE_VER=${R_HEKATE_VER:-${hekate_ver}}"
+            echo "HEKATE_FILE=${R_HEKATE_FILE:-${hekate_file}}"
+            echo "HEKATE_FILE_8GB=${R_HEKATE_FILE_8GB:-${hekate_8gb}}"
+          } >> "$GITHUB_ENV"
+          # ↑ end hekate block
 
           set_vars AMS \
             "$(fetch_release Atmosphere-NX/Atmosphere '^atmosphere-.*\.zip$')" \
@@ -112,8 +126,8 @@ jobs:
               "${SYSCLK_VER}" "${SYSCLK_FILE}"
             printf '\n[Status Monitor]\nversion=%s\nfilename=%s\n' \
               "${STATUS_VER}" "${STATUS_FILE}"
-            printf '\n[hekate]\nversion=%s\nfilename=%s\n' \
-              "${HEKATE_VER}" "${HEKATE_FILE}"
+            printf '\n[hekate]\nversion=%s\nfilename=%s\nfilename_8gb=%s\n' \
+              "${HEKATE_VER}" "${HEKATE_FILE}" "${HEKATE_FILE_8GB}"
             printf '\n[Atmosphere]\nversion=%s\nfilename=%s\n' \
               "${AMS_VER}" "${AMS_FILE}"
           } > RELEASE.ini
