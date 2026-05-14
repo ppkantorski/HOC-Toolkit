@@ -5,13 +5,13 @@
     "hex": "01000000"
   },
   {
-    "name": "1581 MHz Tbreak",
-    "label": "1581 MHz Tbreak",
+    "name": "1581 MHz TBreak",
+    "label": "1581 MHz TBreak",
     "hex": "02000000"
   },
   {
-    "name": "1683 MHz Tbreak",
-    "label": "1683 MHz Tbreak",
+    "name": "1683 MHz TBreak",
+    "label": "1683 MHz TBreak",
     "hex": "03000000"
   },
   {
