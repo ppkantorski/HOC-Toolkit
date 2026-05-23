@@ -33,9 +33,11 @@ jobs:
             echo "R_SYSCLK_FILE=$(parse_ini 'sys-clk' filename)"
             echo "R_STATUS_VER=$(parse_ini 'Status Monitor' version)"
             echo "R_STATUS_FILE=$(parse_ini 'Status Monitor' filename)"
+            echo "R_SALTYNX_VER=$(parse_ini 'SaltyNX' version)"
+            echo "R_SALTYNX_FILE=$(parse_ini 'SaltyNX' filename)"
             echo "R_HEKATE_VER=$(parse_ini 'hekate' version)"
             echo "R_HEKATE_FILE=$(parse_ini 'hekate' filename)"
-            echo "R_HEKATE_FILE_8GB=$(parse_ini 'hekate' filename_8gb)"  # ← new
+            echo "R_HEKATE_FILE_8GB=$(parse_ini 'hekate' filename_8gb)"
             echo "R_AMS_VER=$(parse_ini 'Atmosphere' version)"
             echo "R_AMS_FILE=$(parse_ini 'Atmosphere' filename)"
           } >> "$GITHUB_ENV"
@@ -92,6 +94,10 @@ jobs:
             "$(fetch_release ppkantorski/Status-Monitor-Overlay '^Status-Monitor-Overlay\.ovl$')" \
             "${R_STATUS_VER}" "${R_STATUS_FILE}"
 
+          set_vars SALTYNX \
+            "$(fetch_release masagrator/SaltyNX '^SaltyNX\.zip$')" \
+            "${R_SALTYNX_VER}" "${R_SALTYNX_FILE}"
+
           # ↓ Hekate: single API call, extract zip + 8GB bin together
           hekate_json=$(curl -fsSL \
             -H "Authorization: Bearer ${GH_TOKEN}" \
@@ -126,6 +132,8 @@ jobs:
               "${SYSCLK_VER}" "${SYSCLK_FILE}"
             printf '\n[Status Monitor]\nversion=%s\nfilename=%s\n' \
               "${STATUS_VER}" "${STATUS_FILE}"
+            printf '\n[SaltyNX]\nversion=%s\nfilename=%s\n' \
+              "${SALTYNX_VER}" "${SALTYNX_FILE}"
             printf '\n[hekate]\nversion=%s\nfilename=%s\nfilename_8gb=%s\n' \
               "${HEKATE_VER}" "${HEKATE_FILE}" "${HEKATE_FILE_8GB}"
             printf '\n[Atmosphere]\nversion=%s\nfilename=%s\n' \
