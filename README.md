@@ -7,7 +7,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/ppkantorski/HOC-Toolkit?color=222222)](https://github.com/ppkantorski/HOC-Toolkit/issues)
 [![GitHub stars](https://img.shields.io/github/stars/ppkantorski/HOC-Toolkit)](https://github.com/ppkantorski/HOC-Toolkit/stargazers)
 
-**HOC Toolkit** is an [Ultrahand](https://github.com/ppkantorski/Ultrahand-Overlay) package for advanced overclocking configuration on the Nintendo Switch, built specifically for [Horizon OC](https://github.com/Horizon-OC/Horizon-OC). It provides a full in-overlay GUI for tuning RAM, CPU, GPU, and SoC parameters directly against the `hoc.kip` kernel patch — no PC required.
+**HOC Toolkit** is an [Ultrahand](https://github.com/ppkantorski/Ultrahand-Overlay) package for advanced overclocking configuration on the Nintendo Switch, built specifically for [Horizon OC](https://github.com/Horizon-OC/Horizon-OC). It provides a full in-overlay GUI for tuning RAM, CPU, GPU, and SoC parameters directly against the `hoc.kip` kernel patch (no PC required).
 
 > **⚠️ Warning:** This package exposes low-level hardware parameters. Incorrect values can cause instability or crashes. Use with caution and proper guidance.
 
