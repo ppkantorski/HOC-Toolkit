@@ -66,7 +66,7 @@
 - Nintendo Switch (Erista or Mariko)
 - [Atmosphere](https://github.com/Atmosphere-NX/Atmosphere) custom firmware
 - [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) (latest)
-- [Horizon OC](https://github.com/Horizon-OC/Horizon-OC) with `hoc.kip` present at `/atmosphere/kips/hoc.kip`
+- [Horizon OC](https://github.com/Horizon-OC/Horizon-OC) `hoc.kip` present at `/atmosphere/kips/hoc.kip`
 
 ---
 
