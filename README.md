@@ -88,6 +88,11 @@
 
 ```
 sdmc:/
+├── config/
+│   └── ultrahand/
+│       └── assets/
+│           └── notifications/
+│               └── hoc.rgba                 ← HOC notification icon (.rgba format)
 └── switch/
     └── .packages/
         └── HOC Toolkit/
