@@ -1,4 +1,4 @@
-# HOC Toolkit (Ultrahand 2.4.3+)
+# HOC Toolkit (Ultrahand 2.4.2+)
 
 [![platform](https://img.shields.io/badge/platform-Switch-898c8c)](https://gbatemp.net/forums/nintendo-switch.283/?prefix_id=44)
 [![language](https://img.shields.io/badge/language-UltraScript-ba1632.svg)](https://github.com/topics/ultrahand-package)
