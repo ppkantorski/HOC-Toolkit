@@ -1,4 +1,4 @@
-# HOC Toolkit (Ultrahand 2.4.2+)
+# HOC Toolkit (Ultrahand 2.4.3+)
 
 [![platform](https://img.shields.io/badge/platform-Switch-898c8c)](https://gbatemp.net/forums/nintendo-switch.283/?prefix_id=44)
 [![language](https://img.shields.io/badge/language-UltraScript-ba1632.svg)](https://github.com/topics/ultrahand-package)
@@ -16,17 +16,17 @@
 ## Features
 
 ### RAM
-- **Max Clock** — select RAM frequency (Mariko: single target; Erista: per-frequency voltage control for 665 / 800 / 1065 MHz)
-- **RAM Frequency Editor** *(Erista only)* — fine-grained per-frequency voltage tuning
+- **Max Clock** — select RAM frequency (Mariko: single target; Erista: independent voltage targets for 665 / 800 / 1065 MHz)
 - **Step Mode** — configure EMC step behavior
-- **Vdd2** — memory core voltage
-- **Vddq** *(Mariko only)* — memory I/O voltage
+- **VDD2** — memory core voltage
+- **VDDQ** *(Mariko only)* — memory I/O voltage
+- **EMC DVB** — SoC EMC DVB shift configuration
 - **HP Mode** — toggle high-performance EMC mode
 
 ### CPU
-- **Undervolt Mode** *(Erista)* — select from predefined CPU undervolt profiles
 - **Low / High UV Mode** *(Mariko)* — independent named-step trackbar undervolting for low and high frequency ranges
 - **CPU Table** *(Mariko)* — select CPU frequency/voltage curve table
+- **UV Mode** *(Erista)* — select from predefined CPU undervolt profiles
 - **Max Clock** *(Mariko)* — cap maximum CPU frequency
 - **Boost Clock** *(Mariko / Erista)* — configure boost clock target
 - **Low / High Freq Vmin** *(Mariko)* — minimum voltages for low and high frequency domains
@@ -35,27 +35,29 @@
 - **CPU Unlock** *(Erista)* — unlock higher CPU frequency ranges
 
 ### GPU
-- **Undervolt Mode** *(Mariko / Erista)* — select GPU undervolt table profile
+- **GPU Table** *(Mariko / Erista)* — select GPU undervolt table profile
 - **Vmin** *(Mariko / Erista)* — GPU minimum voltage
 - **Vmax** *(Mariko only)* — GPU maximum voltage
 - **Voltage Offset** — global GPU voltage offset
-- **Custom Table** — per-frequency voltage assignment for every GPU clock step (Mariko: 76–1536 MHz; Erista: 76–1075 MHz)
+- **High UV Table** — per-frequency voltage assignment for every GPU clock step (Mariko: 76–1536 MHz; Erista: 76–1075 MHz)
 
 ### Timings
+- **T1–T8** — individual DRAM timing parameters (tRCD, tRP, tRAS, tRRD/tFAW, tRFC, tRTW, tWTR, tREFI)
+- **Timings TBreak** — max clock timing break with T2 RP Cap and fine-tune controls for T6 tRTW and T7 tWTR
 - **Presets** — one-tap vendor timing profiles (Samsung, Hynix, Micron, Default)
 - **Read / Write Latency** — per-platform latency tuning
-- **Advanced Latency** *(Mariko)* — per-bucket read/write latency control across all four latency regions
-- **T1–T8** — individual DRAM timing parameters (tRCD, tRP, tRAS, tRRD/tFAW, tRFC, tRTW, tWTR, tREFI)
-
-### SoC
-- **Voltage Shift** — SoC DVB shift configuration
+- **Advanced Latency** *(Mariko)* — per-bucket read/write latency control across four latency regions (Latency 0–3)
 
 ### Tools
 - **Info** — live dashboard showing current RAM, CPU, GPU, and SoC parameters read directly from `hoc.kip`
-- **Backup System** — named save/restore slots for full configuration snapshots; each slot stores all tunable values and displays a timing summary on load
-- **System Settings** — toggle GPU Scheduling, Always Save Cheats, Controller Sync (BT DB), and Hold R for HB Menu directly from the overlay
-- **Fan Curve** — optimize the system fan curve for higher clocks, with a Tskin target step trackbar (52–60 °C)
+- **Backup System** — 21 named save/restore slots for full configuration snapshots; each slot displays a timing and voltage summary on load
+- **AMS Settings** — toggle GPU Scheduling, Always Save Cheats, Controller Sync (BT DB), and Hold R for HB Menu directly from the overlay; includes Fan Curve optimizer
+- **hekate Settings** — select the active bootloader INI, and patch or remove `hoc.kip` entries per boot entry or globally
+- **Software Update** — one-tap update for HOC Toolkit, Horizon OC, sys-clk-hoc, sys-clk, Status Monitor, SaltyNX, Atmosphere, hekate, and Ultrahand Overlay
 - **Reboot To** — reboot directly into any Hekate boot entry, Hekate menu, or UMS mode
+
+### Fan Curve *(inside AMS Settings)*
+- **Tskin Target** — step trackbar (52–60 °C) that optimizes the system fan curve for sustained higher clocks by writing a custom `tc` table to `system_settings.ini`
 
 ---
 
@@ -64,7 +66,7 @@
 - Nintendo Switch (Erista or Mariko)
 - [Atmosphere](https://github.com/Atmosphere-NX/Atmosphere) custom firmware
 - [Ultrahand Overlay](https://github.com/ppkantorski/Ultrahand-Overlay) (latest)
-- [Horizon OC](https://github.com/Horizon-OC/Horizon-OC) 2.1.0+ with `hoc.kip` present at `/atmosphere/kips/hoc.kip`
+- [Horizon OC](https://github.com/Horizon-OC/Horizon-OC) with `hoc.kip` present at `/atmosphere/kips/hoc.kip`
 
 ---
 
@@ -89,25 +91,34 @@ sdmc:/
 └── switch/
     └── .packages/
         └── HOC Toolkit/
-            ├── package.ini              ← main menu (RAM / CPU / GPU / SoC)
-            ├── boot_package.ini         ← syncs all footers on every overlay boot
-            ├── timings.ini              ← timing submenu
-            ├── timing_presets.ini       ← vendor timing presets
-            ├── advanced_ram_latency.ini ← per-bucket latency editor (Mariko)
-            ├── backup.ini               ← backup slot UI
-            ├── backup_info.ini          ← backup slot detail view
-            ├── backup_labels.txt
-            ├── custom_table.ini         ← per-frequency GPU voltage table
-            ├── fan_curve.ini            ← fan curve optimizer
-            ├── info.ini                 ← live info dashboard
-            ├── system-settings.ini      ← system toggle menu
-            ├── ram_erista.ini           ← Erista per-frequency RAM voltage editor
-            ├── ram_volt.ini
-            ├── preset_*.ini             ← vendor timing preset definitions
-            ├── config.ini               ← runtime footer state (auto-managed)
-            ├── erista/                  ← Erista-specific option JSON files
-            ├── mariko/                  ← Mariko-specific option JSON files
-            └── json/                    ← shared lookup and option JSON files
+            ├── package.ini                  ← main menu (RAM / CPU / GPU / Tools)
+            ├── boot_package.ini             ← syncs all footers on every overlay boot
+            ├── exit_package.ini             ← cleanup on overlay exit
+            ├── timings.ini                  ← timing submenu
+            ├── advanced_ram_latency.ini     ← per-bucket latency editor (Mariko)
+            ├── gpu_table_high_uv.ini        ← per-frequency GPU voltage table
+            ├── software_update.ini          ← software update menu
+            ├── global_cmds.ini              ← shared command macros
+            ├── include/
+            │   ├── backup/
+            │   │   ├── backup.ini           ← backup slot UI
+            │   │   ├── backup_info.ini      ← backup slot detail view
+            │   │   └── backup_labels.txt
+            │   ├── info/
+            │   │   └── info.ini             ← live info dashboard
+            │   ├── ram/
+            │   │   ├── timing_presets.ini   ← vendor timing preset menu
+            │   │   ├── preset_samsung.ini
+            │   │   ├── preset_hynix.ini
+            │   │   ├── preset_micron.ini
+            │   │   └── preset_default.ini
+            │   └── settings/
+            │       ├── ams_settings.ini     ← AMS toggles + fan curve
+            │       ├── fan_curve.ini        ← fan curve optimizer
+            │       └── hekate_settings.ini  ← bootloader INI manager
+            ├── erista/                      ← Erista-specific option JSON files
+            ├── mariko/                      ← Mariko-specific option JSON files
+            └── json/                        ← shared lookup and option JSON files
 ```
 
 ---
@@ -122,13 +133,13 @@ Platform-specific sections are gated using Ultrahand's `erista:` and `mariko:` g
 
 ## Credits
 
-HOC Toolkit is a continuation of the original [OC Toolkit](https://github.com/ppkantorski/Ultrahand-Overlay/tree/main/examples/OC%20Toolkit) by [ppkantorski](https://github.com/ppkantorski), which was further developed in [OC Switchcraft EOS](https://github.com/halop/OC-Switchcraft-EOS) by [halop](https://github.com/halop) and later with preliminary updates for HOC by [NaGaa95](https://github.com/NaGaa95).
+HOC Toolkit is a continuation of the original [OC Toolkit](https://github.com/ppkantorski/Ultrahand-Overlay/tree/main/examples/OC%20Toolkit), which was further developed in [OC Switchcraft EOS](https://github.com/halop/OC-Switchcraft-EOS) by [halop](https://github.com/halop) and later with preliminary updates for HOC by [NaGaa95](https://github.com/NaGaa95).
 
 | Contributor | Role |
 |---|---|
 | [ppkantorski](https://github.com/ppkantorski) | Original author; Ultrahand Overlay |
-| [halop](https://github.com/halop) | OC Toolkit development; EOS development |
-| [NaGa](https://github.com/NaGa) | OC Toolkit development; EOS Pro development |
+| [halop (B3711)](https://github.com/halop) | OC Toolkit development; EOS development |
+| [NaGaa95](https://github.com/NaGaa95) | OC Toolkit development; EOS Pro development |
 
 ---
 
