@@ -1,9 +1,9 @@
 [
-    { "name": "-3",           "label": "-3",           "hex": "FDFFFFFF" },
-    { "name": "-2",           "label": "-2",           "hex": "FEFFFFFF" },
-    { "name": "-1",           "label": "-1",           "hex": "FFFFFFFF" },
-    { "name": " 0 (Default)", "label": " 0 (Default)", "hex": "00000000" },
-    { "name": "+1",           "label": "+1",           "hex": "01000000" },
-    { "name": "+2",           "label": "+2",           "hex": "02000000" },
-    { "name": "+3",           "label": "+3",           "hex": "03000000" }
+    { "name": "-3",            "label": "-3",            "hex": "FDFFFFFF" },
+    { "name": "-2",            "label": "-2",            "hex": "FEFFFFFF" },
+    { "name": "-1",            "label": "-1",            "hex": "FFFFFFFF" },
+    { "name": "0 - (Default)", "label": "0 - (Default)", "hex": "00000000" },
+    { "name": "+1",            "label": "+1",            "hex": "01000000" },
+    { "name": "+2",            "label": "+2",            "hex": "02000000" },
+    { "name": "+3",            "label": "+3",            "hex": "03000000" }
 ]
