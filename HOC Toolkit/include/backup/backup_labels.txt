@@ -1,6 +1,7 @@
 ⋯
 Current
-Legacy
+Old
+Testing
 Docked
 Handheld
 Retro
@@ -8,5 +9,5 @@ Extreme
 Low Power
 Stable
 Unstable
-Testing
 Experimental
+Legacy
