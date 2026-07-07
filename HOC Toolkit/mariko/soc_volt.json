@@ -1,0 +1,217 @@
+[
+    {
+        "name": "Do not override",
+        "label": "Do not override",
+        "hex": "00000000"
+    },
+    {
+        "name": "637 mV",
+        "label": "637 mV",
+        "hex": "7D020000"
+    },
+    {
+        "name": "650 mV",
+        "label": "650 mV",
+        "hex": "8A020000"
+    },
+    {
+        "name": "662 mV",
+        "label": "662 mV",
+        "hex": "96020000"
+    },
+    {
+        "name": "675 mV",
+        "label": "675 mV",
+        "hex": "A3020000"
+    },
+    {
+        "name": "687 mV",
+        "label": "687 mV",
+        "hex": "AF020000"
+    },
+    {
+        "name": "700 mV",
+        "label": "700 mV",
+        "hex": "BC020000"
+    },
+    {
+        "name": "712 mV",
+        "label": "712 mV",
+        "hex": "C8020000"
+    },
+    {
+        "name": "725 mV",
+        "label": "725 mV",
+        "hex": "D5020000"
+    },
+    {
+        "name": "737 mV",
+        "label": "737 mV",
+        "hex": "E1020000"
+    },
+    {
+        "name": "750 mV",
+        "label": "750 mV",
+        "hex": "EE020000"
+    },
+    {
+        "name": "762 mV",
+        "label": "762 mV",
+        "hex": "FA020000"
+    },
+    {
+        "name": "775 mV",
+        "label": "775 mV",
+        "hex": "07030000"
+    },
+    {
+        "name": "787 mV",
+        "label": "787 mV",
+        "hex": "13030000"
+    },
+    {
+        "name": "800 mV",
+        "label": "800 mV",
+        "hex": "20030000"
+    },
+    {
+        "name": "812 mV",
+        "label": "812 mV",
+        "hex": "2C030000"
+    },
+    {
+        "name": "825 mV",
+        "label": "825 mV",
+        "hex": "39030000"
+    },
+    {
+        "name": "837 mV",
+        "label": "837 mV",
+        "hex": "45030000"
+    },
+    {
+        "name": "850 mV",
+        "label": "850 mV",
+        "hex": "52030000"
+    },
+    {
+        "name": "862 mV",
+        "label": "862 mV",
+        "hex": "5E030000"
+    },
+    {
+        "name": "875 mV",
+        "label": "875 mV",
+        "hex": "6B030000"
+    },
+    {
+        "name": "887 mV",
+        "label": "887 mV",
+        "hex": "77030000"
+    },
+    {
+        "name": "900 mV",
+        "label": "900 mV",
+        "hex": "84030000"
+    },
+    {
+        "name": "912 mV",
+        "label": "912 mV",
+        "hex": "90030000"
+    },
+    {
+        "name": "925 mV",
+        "label": "925 mV",
+        "hex": "9D030000"
+    },
+    {
+        "name": "937 mV",
+        "label": "937 mV",
+        "hex": "A9030000"
+    },
+    {
+        "name": "950 mV",
+        "label": "950 mV",
+        "hex": "B6030000"
+    },
+    {
+        "name": "962 mV",
+        "label": "962 mV",
+        "hex": "C2030000"
+    },
+    {
+        "name": "975 mV",
+        "label": "975 mV",
+        "hex": "CF030000"
+    },
+    {
+        "name": "987 mV",
+        "label": "987 mV",
+        "hex": "DB030000"
+    },
+    {
+        "name": "1000 mV",
+        "label": "1000 mV",
+        "hex": "E8030000"
+    },
+    {
+        "name": "1012 mV",
+        "label": "1012 mV",
+        "hex": "F4030000"
+    },
+    {
+        "name": "1025 mV",
+        "label": "1025 mV",
+        "hex": "01040000"
+    },
+    {
+        "name": "1037 mV",
+        "label": "1037 mV",
+        "hex": "0D040000"
+    },
+    {
+        "name": "1050 mV",
+        "label": "1050 mV",
+        "hex": "1A040000"
+    },
+    {
+        "name": "1062 mV",
+        "label": "1062 mV",
+        "hex": "26040000"
+    },
+    {
+        "name": "1075 mV",
+        "label": "1075 mV",
+        "hex": "33040000"
+    },
+    {
+        "name": "1087 mV",
+        "label": "1087 mV",
+        "hex": "3F040000"
+    },
+    {
+        "name": "1100 mV",
+        "label": "1100 mV",
+        "hex": "4C040000"
+    },
+    {
+        "name": "1112 mV",
+        "label": "1112 mV",
+        "hex": "58040000"
+    },
+    {
+        "name": "1125 mV",
+        "label": "1125 mV",
+        "hex": "65040000"
+    },
+    {
+        "name": "1137 mV",
+        "label": "1137 mV",
+        "hex": "71040000"
+    },
+    {
+        "name": "1150 mV",
+        "label": "1150 mV",
+        "hex": "7E040000"
+    }
+]

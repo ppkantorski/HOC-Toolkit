@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Do not override",
+        "label": "Do not override",
+        "hex": "00000000"
+    },
+    {
+        "name": "1000 mV",
+        "label": "1000 mV",
+        "hex": "E8030000"
+    },
+    {
+        "name": "1025 mV",
+        "label": "1025 mV",
+        "hex": "01040000"
+    },
+    {
+        "name": "1050 mV",
+        "label": "1050 mV",
+        "hex": "1A040000"
+    },
+    {
+        "name": "1075 mV",
+        "label": "1075 mV",
+        "hex": "33040000"
+    },
+    {
+        "name": "1100 mV",
+        "label": "1100 mV",
+        "hex": "4C040000"
+    },
+    {
+        "name": "1125 mV",
+        "label": "1125 mV",
+        "hex": "65040000"
+    },
+    {
+        "name": "1150 mV",
+        "label": "1150 mV",
+        "hex": "7E040000"
+    },
+    {
+        "name": "1175 mV",
+        "label": "1175 mV",
+        "hex": "97040000"
+    },
+    {
+        "name": "1200 mV",
+        "label": "1200 mV",
+        "hex": "B0040000"
+    }
+]
