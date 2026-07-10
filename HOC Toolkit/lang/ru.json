@@ -253,5 +253,17 @@
     "AOTAG (optional)": "AOTAG (необязательно)",
     "MAX REFRESH - (6)": "MAX REFRESH - (6)",
     "0 - (Default)": "0 - (По умолчанию)",
-    "2 - (Default)": "2 - (По умолчанию)"
+    "2 - (Default)": "2 - (По умолчанию)",
+    "Current": "Текущий",
+    "Old": "Старый",
+    "Testing": "Тест",
+    "Docked": "В доке",
+    "Handheld": "Портатив",
+    "Retro": "Ретро",
+    "Extreme": "Экстрим",
+    "Low Power": "Эконом",
+    "Stable": "Стабильный",
+    "Unstable": "Нестабильный",
+    "Experimental": "Экспериментальный",
+    "Legacy": "Устаревший"
 }

@@ -253,5 +253,17 @@
     "AOTAG (optional)": "AOTAG (optionnel)",
     "MAX REFRESH - (6)": "MAX REFRESH - (6)",
     "0 - (Default)": "0 - (Défaut)",
-    "2 - (Default)": "2 - (Défaut)"
+    "2 - (Default)": "2 - (Défaut)",
+    "Current": "Actuel",
+    "Old": "Ancien",
+    "Testing": "Test",
+    "Docked": "Ancré",
+    "Handheld": "Portable",
+    "Retro": "Rétro",
+    "Extreme": "Extrême",
+    "Low Power": "Basse conso",
+    "Stable": "Stable",
+    "Unstable": "Instable",
+    "Experimental": "Expérimental",
+    "Legacy": "Hérité"
 }

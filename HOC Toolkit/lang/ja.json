@@ -253,5 +253,17 @@
     "AOTAG (optional)": "AOTAG (オプション)",
     "MAX REFRESH - (6)": "最大リフレッシュ - (6)",
     "0 - (Default)": "0 - (デフォルト)",
-    "2 - (Default)": "2 - (デフォルト)"
+    "2 - (Default)": "2 - (デフォルト)",
+    "Current": "現在",
+    "Old": "旧",
+    "Testing": "テスト",
+    "Docked": "ドックモード",
+    "Handheld": "携帯モード",
+    "Retro": "レトロ",
+    "Extreme": "極限",
+    "Low Power": "低電力",
+    "Stable": "安定",
+    "Unstable": "不安定",
+    "Experimental": "実験的",
+    "Legacy": "レガシー"
 }

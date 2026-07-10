@@ -253,5 +253,17 @@
     "AOTAG (optional)": "AOTAG (可选)",
     "MAX REFRESH - (6)": "最大刷新频率 - (6)",
     "0 - (Default)": "0 - (默认)",
-    "2 - (Default)": "2 - (默认)"
+    "2 - (Default)": "2 - (默认)",
+    "Current": "当前",
+    "Old": "旧",
+    "Testing": "测试模式",
+    "Docked": "底座模式",
+    "Handheld": "手持模式",
+    "Retro": "复古模式",
+    "Extreme": "极限模式",
+    "Low Power": "低功耗模式",
+    "Stable": "稳定模式",
+    "Unstable": "不稳定",
+    "Experimental": "实验性",
+    "Legacy": "旧版"
 }

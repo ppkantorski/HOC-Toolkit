@@ -253,5 +253,17 @@
     "AOTAG (optional)": "AOTAG (opcjonalne)",
     "MAX REFRESH - (6)": "MAX REFRESH - (6)",
     "0 - (Default)": "0 - (Domyślne)",
-    "2 - (Default)": "2 - (Domyślne)"
+    "2 - (Default)": "2 - (Domyślne)",
+    "Current": "Bieżący",
+    "Old": "Stary",
+    "Testing": "Testowy",
+    "Docked": "W doku",
+    "Handheld": "Przenośny",
+    "Retro": "Retro",
+    "Extreme": "Ekstremalny",
+    "Low Power": "Niski pobór",
+    "Stable": "Stabilny",
+    "Unstable": "Niestabilny",
+    "Experimental": "Eksperymentalny",
+    "Legacy": "Starsze"
 }
