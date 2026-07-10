@@ -250,5 +250,8 @@
     "Users must first disable sys-clk-hoc / hoc-clk in Sysmodules before clicking the “sys-clk-hoc  hoc-clk” toggle.": "點選切換開關前，請先在系統模組中禁用'sys-clk-hoc  hoc-clk'。",
     "Auto": "自動",
     " (Default)": " (預設)",
-    "AOTAG (optional)": "AOTAG (可選)"
+    "AOTAG (optional)": "AOTAG (可選)",
+    "MAX REFRESH - (6)": "最大刷新頻率 - (6)",
+    "0 - (Default)": "0 - (預設)",
+    "2 - (Default)": "2 - (預設)"
 }

@@ -250,5 +250,8 @@
     "Users must first disable sys-clk-hoc / hoc-clk in Sysmodules before clicking the “sys-clk-hoc  hoc-clk” toggle.": "Primero se debe desactivar sys-clk-hoc / hoc-clk en Sysmodules antes de pulsar el interruptor “sys-clk-hoc  hoc-clk”.",
     "Auto": "Auto",
     " (Default)": " (Predeterminado)",
-    "AOTAG (optional)": "AOTAG (opcional)"
+    "AOTAG (optional)": "AOTAG (opcional)",
+    "MAX REFRESH - (6)": "MAX REFRESH - (6)",
+    "0 - (Default)": "0 - (Predeterminado)",
+    "2 - (Default)": "2 - (Predeterminado)"
 }
