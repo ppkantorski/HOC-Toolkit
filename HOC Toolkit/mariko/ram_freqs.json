@@ -263,5 +263,15 @@
         "name": "3300 MHz",
         "label": "3300 MHz - 1780+ Speedo",
         "hex": "A05A3200"
+    },
+    {
+        "name": "3333 MHz",
+        "label": "3333 MHz - 1780+ Speedo",
+        "hex": "88DB3200"
+    },
+    {
+        "name": "3366 MHz",
+        "label": "3366 MHz - 1780+ Speedo",
+        "hex": "705C3300"
     }
 ]

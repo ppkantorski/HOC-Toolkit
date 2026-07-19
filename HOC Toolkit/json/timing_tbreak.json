@@ -51,5 +51,7 @@
     { "name": "3200 MHz",  "label": "3200 MHz",  "hex": "00D43000" },
     { "name": "3233 MHz",  "label": "3233 MHz",  "hex": "E8543100" },
     { "name": "3266 MHz",  "label": "3266 MHz",  "hex": "D0D53100" },
-    { "name": "3300 MHz",  "label": "3300 MHz",  "hex": "A05A3200" }
+    { "name": "3300 MHz",  "label": "3300 MHz",  "hex": "A05A3200" },
+    { "name": "3333 MHz",  "label": "3333 MHz",  "hex": "88DB3200" },
+    { "name": "3366 MHz",  "label": "3366 MHz",  "hex": "705C3300" }
 ]
